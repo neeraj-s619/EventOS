@@ -821,32 +821,51 @@ HTML_CONTENT = r'''<!DOCTYPE html>
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <h2 class="text-sm font-bold text-slate-900">Telegram Provider Pulse & Operations Gateway</h2>
-              <span id="wa-integration-badge" class="text-[11px] font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200">TELEGRAM CONNECTED (Polling)</span>
+              <h2 class="text-sm font-bold text-slate-900">EVENTOS Operations Network (Two-Bot Architecture)</h2>
+              <span id="wa-integration-badge" class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">● LIVE POLLING</span>
             </div>
-            <p class="text-xs text-slate-500 font-medium">Real-time two-way operational channel with transport fleets, transit desks & emergency responders via Telegram Bot API (<a id="telegram-header-link" href="https://t.me/hckathn_bot" target="_blank" class="text-sky-600 hover:underline font-semibold">@hckathn_bot</a>).</p>
+            <p class="text-xs text-slate-500 font-medium">Coordinated network connecting Visitors, Hotels, Transport, and Staff into the EVENTOS Digital Twin.</p>
           </div>
         </div>
 
-        <div class="flex items-center gap-3 text-xs font-semibold">
+        <div class="flex items-center gap-3 text-xs font-semibold flex-wrap">
           <div>
-            <span class="text-slate-500 block text-[11px]">Primary Channel:</span>
+            <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Staff / Ops Bot:</span>
             <a id="telegram-channel-link" href="https://t.me/hckathn_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-num text-sky-700 hover:text-sky-800 text-[11px] bg-sky-50 hover:bg-sky-100 px-2 py-0.5 rounded border border-sky-200 transition">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span id="telegram-channel-handle">@hckathn_bot</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
             </a>
           </div>
           <div>
-            <span class="text-slate-500 block text-[11px]">Capacity Gap Status:</span>
+            <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Visitor Bot:</span>
+            <a id="visitor-channel-link" href="https://t.me/eventos_visitor_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-num text-indigo-700 hover:text-indigo-800 text-[11px] bg-indigo-50 hover:bg-indigo-100 px-2 py-0.5 rounded border border-indigo-200 transition">
+              <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+              <span>@eventos_visitor_bot</span>
+              <span class="text-[9px] px-1 bg-indigo-100 rounded text-indigo-800">SANDBOX</span>
+            </a>
+          </div>
+          <div>
+            <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Network Gap:</span>
             <span id="wa-gap-status" class="font-bold text-emerald-600">BALANCED</span>
           </div>
-          <button onclick="dispatchTelegramOperationalPoll()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow-sm transition">
-            Broadcast Fleet Poll
-          </button>
-          <button onclick="runClosedLoopDemo()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-lg shadow-sm transition flex items-center gap-1.5" title="Demonstrate 10-step shock, poll, response, and gap recalculation">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
-            <span>Run Closed-Loop Demo</span>
-          </button>
+          <div class="flex items-center gap-1.5">
+            <button onclick="dispatchTelegramOperationalPoll()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-lg shadow-sm transition">
+              Broadcast Fleet Poll
+            </button>
+            <button onclick="runSimulatedCrowdAlert()" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-lg shadow-sm transition flex items-center gap-1.5" title="Test Digital Twin crowd breach alert dispatch, staff diversion action, and risk stabilization">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              <span>Crowd Alert Loop</span>
+            </button>
+            <button onclick="runSimulatedHotelRequest()" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg shadow-sm transition flex items-center gap-1.5" title="Test Visitor hotel request match, staff bot hotel approval, and confirmation">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              <span>Hotel Request Loop</span>
+            </button>
+            <button onclick="runClosedLoopDemo()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-lg shadow-sm transition flex items-center gap-1.5" title="Demonstrate 10-step shock, poll, response, and gap recalculation">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+              <span>Transport Loop</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -2250,6 +2269,44 @@ HTML_CONTENT = r'''<!DOCTYPE html>
           await refreshDashboardState();
         } else {
           showToast(`Demo failed: ${data.detail || 'Error running demo'}`, 'danger');
+        }
+      } catch (e) {
+        showToast(`Error: ${e.message}`, 'danger');
+      }
+    }
+
+    // Run Simulated Crowd Alert Closed Loop (Digital Twin -> Staff Bot -> Diversion -> Risk Stabilized)
+    async function runSimulatedCrowdAlert() {
+      try {
+        showToast("Dispatching simulated crowd surge alert to Staff Bot...", "info");
+        const res = await fetch(`${API_BASE}/operations-network/simulate-crowd-alert`, {
+          method: "POST"
+        });
+        const data = await res.json();
+        if (res.ok && data.status === "ok") {
+          showToast(`Crowd Closed-Loop Done: Alert dispatched to Zone ${data.zone_id}, diversion executed, risk stabilized to WATCH!`, 'success');
+          await refreshDashboardState();
+        } else {
+          showToast(`Crowd Alert failed: ${data.detail || 'Error'}`, 'danger');
+        }
+      } catch (e) {
+        showToast(`Error: ${e.message}`, 'danger');
+      }
+    }
+
+    // Run Simulated Hotel Request Closed Loop (Visitor Bot -> EVENTOS -> Staff Bot -> Provider Accept)
+    async function runSimulatedHotelRequest() {
+      try {
+        showToast("Processing simulated visitor hotel booking request...", "info");
+        const res = await fetch(`${API_BASE}/operations-network/simulate-hotel-request`, {
+          method: "POST"
+        });
+        const data = await res.json();
+        if (res.ok && data.status === "ok") {
+          showToast(`Hotel Closed-Loop Done: Booking ${data.request_id} accepted & confirmed to visitor!`, 'success');
+          await refreshDashboardState();
+        } else {
+          showToast(`Hotel Request failed: ${data.detail || 'Error'}`, 'danger');
         }
       } catch (e) {
         showToast(`Error: ${e.message}`, 'danger');

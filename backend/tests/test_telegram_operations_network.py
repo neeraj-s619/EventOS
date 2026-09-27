@@ -14,6 +14,7 @@ Covers:
 """
 
 import unittest
+import uuid
 from unittest.mock import patch, MagicMock, AsyncMock
 from fastapi.testclient import TestClient
 
@@ -42,6 +43,12 @@ class TestTelegramOperationsNetwork(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.db.close()
+
+    def setUp(self):
+        self.db.rollback()
+
+    def tearDown(self):
+        self.db.rollback()
 
     def test_01_visitor_registration(self):
         """Verify visitor registration with minimal PII."""
@@ -180,8 +187,9 @@ class TestTelegramOperationsNetwork(unittest.TestCase):
 
     def test_06_staff_acknowledgement(self):
         """Verify staff acknowledges alert via inline button."""
+        alert_id = f"ALT-ACK-{uuid.uuid4().hex[:6]}"
         alert = OperationalAlertDB(
-            alert_id="ALT-TEST-ACK",
+            alert_id=alert_id,
             event_id="EVT-MUMBAI-MAIN",
             zone_id="ZONE-A",
             severity="WARNING",
@@ -199,7 +207,7 @@ class TestTelegramOperationsNetwork(unittest.TestCase):
             import asyncio
             res = asyncio.run(s_adapter.acknowledge_alert(
                 chat_id="test_staff_chat_201",
-                alert_id="ALT-TEST-ACK",
+                alert_id=alert_id,
                 from_user={"first_name": "Vikas"}
             ))
             self.assertTrue(res.get("ok"))
@@ -228,8 +236,9 @@ class TestTelegramOperationsNetwork(unittest.TestCase):
             self.db.commit()
 
         initial_inflow = zone.inflow_per_minute
+        alert_id = f"ALT-DIV-{uuid.uuid4().hex[:6]}"
         alert = OperationalAlertDB(
-            alert_id="ALT-TEST-DIV",
+            alert_id=alert_id,
             event_id=zone.event_id,
             zone_id=zone.zone_id,
             severity="WARNING",
@@ -247,7 +256,7 @@ class TestTelegramOperationsNetwork(unittest.TestCase):
             import asyncio
             res = asyncio.run(s_adapter.start_diversion(
                 chat_id="test_staff_chat_201",
-                alert_id="ALT-TEST-DIV",
+                alert_id=alert_id,
                 from_user={"first_name": "Vikas"}
             ))
             self.assertTrue(res.get("ok"))

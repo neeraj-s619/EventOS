@@ -227,3 +227,14 @@ class NugenClient:
                     last_error = str(ex)
 
             raise NugenClientError(f"Nugen inference failed across endpoints: {last_error}")
+
+
+_nugen_client: Optional[NugenClient] = None
+
+
+def get_nugen_client() -> NugenClient:
+    """Returns singleton instance of NugenClient."""
+    global _nugen_client
+    if _nugen_client is None:
+        _nugen_client = NugenClient()
+    return _nugen_client

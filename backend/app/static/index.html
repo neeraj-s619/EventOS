@@ -749,75 +749,6 @@
 
           </div>
 
-          <!-- Provider Pulse Dashboard Cockpit Panel -->
-          <div id="overview-provider-pulse-panel" class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-              <div class="flex items-center gap-2">
-                <div class="w-6 h-6 rounded-lg bg-sky-500/10 text-sky-600 flex items-center justify-center font-bold">
-                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.196 1.006.128.832.922z"/></svg>
-                </div>
-                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Provider Pulse</h3>
-              </div>
-              <span id="overview-pulse-status-pill" class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">○ NOT CONFIGURED</span>
-            </div>
-
-            <!-- Unconfigured honest helper banner -->
-            <div id="overview-pulse-config-helper" class="text-[11px] text-amber-800 bg-amber-50/90 px-2.5 py-1.5 rounded-lg border border-amber-200 font-medium flex items-center gap-1.5">
-              <span class="font-bold text-amber-600">ℹ</span>
-              <span>Configure TELEGRAM_BOT_TOKEN to activate.</span>
-            </div>
-
-            <!-- Provider Count Chips -->
-            <div class="grid grid-cols-3 gap-1.5 text-center">
-              <div class="p-2 rounded-lg bg-slate-50 border border-slate-100">
-                <span id="overview-pulse-total" class="block font-bold text-xs text-slate-900 font-num">18</span>
-                <span class="text-[10px] text-slate-500 font-medium">Providers</span>
-              </div>
-              <div class="p-2 rounded-lg bg-emerald-50/70 border border-emerald-100">
-                <span id="overview-pulse-responded" class="block font-bold text-xs text-emerald-700 font-num">12</span>
-                <span class="text-[10px] text-emerald-600 font-medium">Responded</span>
-              </div>
-              <div class="p-2 rounded-lg bg-amber-50/70 border border-amber-100">
-                <span id="overview-pulse-awaiting" class="block font-bold text-xs text-amber-700 font-num">6</span>
-                <span class="text-[10px] text-amber-600 font-medium">Awaiting</span>
-              </div>
-            </div>
-
-            <!-- Dynamic Latest Provider Responses -->
-            <div>
-              <div class="flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">
-                <span>Latest Provider Responses</span>
-                <span class="text-[10px] font-semibold text-sky-600">Telegram</span>
-              </div>
-              <div id="overview-pulse-latest-list" class="space-y-1.5 text-xs max-h-[140px] overflow-y-auto">
-                <div class="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
-                  <div>
-                    <div class="font-bold text-slate-800">BEST SHUTTLE</div>
-                    <div class="text-[10px] text-slate-500">14 sec ago</div>
-                  </div>
-                  <span class="font-bold font-num text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">+100 seats</span>
-                </div>
-                <div class="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
-                  <div>
-                    <div class="font-bold text-slate-800">MARINE HOTEL</div>
-                    <div class="text-[10px] text-slate-500">31 sec ago</div>
-                  </div>
-                  <span class="font-bold font-num text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">+82 rooms</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="pt-2 border-t border-slate-100 grid grid-cols-2 gap-2">
-              <button onclick="openContactProviderModal()" class="w-full py-1.5 px-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] rounded-lg border border-slate-200 transition text-center shadow-2xs">
-                Contact Provider
-              </button>
-              <button onclick="openSendCapacityRequestModal()" class="w-full py-1.5 px-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] rounded-lg shadow-2xs transition text-center">
-                Send Capacity Request
-              </button>
-            </div>
-          </div>
-
         </div>
 
       </div>
@@ -877,32 +808,51 @@
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <h2 class="text-sm font-bold text-slate-900">Telegram Provider Pulse & Operations Gateway</h2>
-              <span id="wa-integration-badge" class="text-[11px] font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200">TELEGRAM CONNECTED (Polling)</span>
+              <h2 class="text-sm font-bold text-slate-900">EVENTOS Operations Network (Two-Bot Architecture)</h2>
+              <span id="wa-integration-badge" class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">● LIVE POLLING</span>
             </div>
-            <p class="text-xs text-slate-500 font-medium">Real-time two-way operational channel with transport fleets, transit desks & emergency responders via Telegram Bot API (<a id="telegram-header-link" href="https://t.me/hckathn_bot" target="_blank" class="text-sky-600 hover:underline font-semibold">@hckathn_bot</a>).</p>
+            <p class="text-xs text-slate-500 font-medium">Coordinated network connecting Visitors, Hotels, Transport, and Staff into the EVENTOS Digital Twin.</p>
           </div>
         </div>
 
-        <div class="flex items-center gap-3 text-xs font-semibold">
+        <div class="flex items-center gap-3 text-xs font-semibold flex-wrap">
           <div>
-            <span class="text-slate-500 block text-[11px]">Primary Channel:</span>
+            <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Staff / Ops Bot:</span>
             <a id="telegram-channel-link" href="https://t.me/hckathn_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-num text-sky-700 hover:text-sky-800 text-[11px] bg-sky-50 hover:bg-sky-100 px-2 py-0.5 rounded border border-sky-200 transition">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span id="telegram-channel-handle">@hckathn_bot</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
             </a>
           </div>
           <div>
-            <span class="text-slate-500 block text-[11px]">Capacity Gap Status:</span>
+            <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Visitor Bot:</span>
+            <a id="visitor-channel-link" href="https://t.me/eventos_visitor_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-num text-indigo-700 hover:text-indigo-800 text-[11px] bg-indigo-50 hover:bg-indigo-100 px-2 py-0.5 rounded border border-indigo-200 transition">
+              <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+              <span>@eventos_visitor_bot</span>
+              <span class="text-[9px] px-1 bg-indigo-100 rounded text-indigo-800">SANDBOX</span>
+            </a>
+          </div>
+          <div>
+            <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Network Gap:</span>
             <span id="wa-gap-status" class="font-bold text-emerald-600">BALANCED</span>
           </div>
-          <button onclick="dispatchTelegramOperationalPoll()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow-sm transition">
-            Broadcast Fleet Poll
-          </button>
-          <button onclick="runClosedLoopDemo()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-lg shadow-sm transition flex items-center gap-1.5" title="Demonstrate 10-step shock, poll, response, and gap recalculation">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
-            <span>Run Closed-Loop Demo</span>
-          </button>
+          <div class="flex items-center gap-1.5">
+            <button onclick="dispatchTelegramOperationalPoll()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-lg shadow-sm transition">
+              Broadcast Fleet Poll
+            </button>
+            <button onclick="runSimulatedCrowdAlert()" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-lg shadow-sm transition flex items-center gap-1.5" title="Test Digital Twin crowd breach alert dispatch, staff diversion action, and risk stabilization">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              <span>Crowd Alert Loop</span>
+            </button>
+            <button onclick="runSimulatedHotelRequest()" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg shadow-sm transition flex items-center gap-1.5" title="Test Visitor hotel request match, staff bot hotel approval, and confirmation">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              <span>Hotel Request Loop</span>
+            </button>
+            <button onclick="runClosedLoopDemo()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-lg shadow-sm transition flex items-center gap-1.5" title="Demonstrate 10-step shock, poll, response, and gap recalculation">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+              <span>Transport Loop</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -976,58 +926,6 @@
         <!-- Right: Live Telegram Operational Chat & Dispatcher (7 Cols) -->
         <div class="lg:col-span-7 space-y-3">
           
-          <!-- Selected Provider Detail Card -->
-          <div id="selected-provider-card" class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-              <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span id="sel-prov-name" class="font-bold text-sm text-slate-900">BEST Shuttle — South Zone</span>
-                <span id="sel-prov-type" class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200 uppercase">TRANSPORT</span>
-              </div>
-              <span id="sel-prov-status" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">ACTIVE</span>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
-              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span class="text-[10px] text-slate-500 font-bold uppercase block">Communication</span>
-                <span id="sel-prov-channel" class="font-bold text-sky-700 font-num">Telegram (@best_mumbai_bot)</span>
-              </div>
-              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span class="text-[10px] text-slate-500 font-bold uppercase block">Available Units</span>
-                <span id="sel-prov-capacity" class="font-bold text-slate-900 font-num">450 seats available</span>
-              </div>
-              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span class="text-[10px] text-slate-500 font-bold uppercase block">Latest Response</span>
-                <span id="sel-prov-latest-response" class="font-bold text-emerald-700 font-num">+100 seats available</span>
-              </div>
-              <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                <span class="text-[10px] text-slate-500 font-bold uppercase block">Last Update</span>
-                <span id="sel-prov-last-update" class="font-bold text-slate-600 font-num">14 sec ago</span>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-between pt-1">
-              <div class="text-[11px] text-slate-500 font-medium">
-                Operational status synchronized via Telegram Provider Pulse.
-              </div>
-              <div class="flex items-center gap-2">
-                <button onclick="openContactProviderModal(selectedProviderId)" class="px-3 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-200 transition">
-                  Contact via Telegram
-                </button>
-                <button onclick="openSendCapacityRequestModal(selectedProviderId)" class="px-3.5 py-1.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-2xs transition">
-                  Send Capacity Request
-                </button>
-              </div>
-            </div>
-
-            <div id="sel-prov-audit-section" class="pt-2 border-t border-slate-100">
-              <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Audit History</div>
-              <div id="sel-prov-history-list" class="space-y-1 max-h-[80px] overflow-y-auto text-xs">
-                <!-- Dynamically populated -->
-              </div>
-            </div>
-          </div>
-
           <!-- Live Telemetry Stream -->
           <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs flex flex-col h-[340px]">
             <div class="flex items-center justify-between pb-3 border-b border-slate-100">
@@ -1587,123 +1485,6 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- MODAL: SEND OPERATIONAL CAPACITY REQUEST (LIQUID GLASS)       -->
-  <!-- ============================================================ -->
-  <div id="send-capacity-request-modal" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-2xs z-50 flex items-center justify-center p-4">
-    <div class="glass-command max-w-md w-full p-5 shadow-2xl space-y-4">
-      <div class="flex items-center justify-between border-b border-white/60 pb-3">
-        <div class="flex items-center gap-2">
-          <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-700 flex items-center justify-center font-bold">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.196 1.006.128.832.922z"/></svg>
-          </div>
-          <div>
-            <h3 class="text-sm font-bold text-slate-900">TRANSPORT CAPACITY REQUEST</h3>
-            <p class="text-[11px] text-slate-500 font-medium">Provider Pulse Operational Dispatch</p>
-          </div>
-        </div>
-        <button onclick="closeSendCapacityRequestModal()" class="text-slate-400 hover:text-slate-700 font-bold p-1">✕</button>
-      </div>
-
-      <!-- Telegram Status Indicator & Token Warning -->
-      <div id="modal-tg-status-banner" class="p-2.5 rounded-lg text-xs font-medium border bg-amber-50/80 border-amber-200 text-amber-900 flex items-start gap-2">
-        <span class="text-amber-600 font-bold text-sm">ℹ</span>
-        <div>
-          <span id="modal-tg-status-text" class="font-bold">○ NOT CONFIGURED:</span>
-          <span id="modal-tg-status-hint">Configure TELEGRAM_BOT_TOKEN to activate live Telegram delivery. (Request will be recorded in audit log & dispatched to provider adapter).</span>
-        </div>
-      </div>
-
-      <div class="space-y-3 text-xs">
-        <div>
-          <label class="font-bold text-slate-700 block mb-1">Target Provider:</label>
-          <select id="modal-poll-provider-select" class="w-full bg-white/80 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-500">
-            <option value="prov-mumbai-best-01">BEST Shuttle — South Zone (@best_mumbai_bot)</option>
-            <option value="prov-mumbai-rail-01">Western Railway Churchgate Desk (@wr_churchgate_ops)</option>
-            <option value="prov-mumbai-hotel-01">Marine Hotel Vivanta Cuffe Parade (@marine_vivanta_bot)</option>
-          </select>
-        </div>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <label class="font-bold text-slate-700 block mb-1">Target Zone:</label>
-            <input id="modal-poll-zone" type="text" value="Zone A - Stadium Bowl" readonly class="w-full bg-slate-100 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 font-medium cursor-not-allowed">
-          </div>
-          <div>
-            <label class="font-bold text-slate-700 block mb-1">Required Capacity:</label>
-            <input id="modal-poll-capacity" type="number" value="120" class="w-full bg-white/80 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 font-bold font-num focus:outline-none focus:ring-1 focus:ring-indigo-500">
-          </div>
-        </div>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <label class="font-bold text-slate-700 block mb-1">Trigger / Reason:</label>
-            <input id="modal-poll-reason" type="text" value="Predicted crowd pressure (concourse density 0.78)" class="w-full bg-white/80 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 font-medium focus:outline-none focus:ring-1 focus:ring-indigo-500">
-          </div>
-          <div>
-            <label class="font-bold text-slate-700 block mb-1">Forecast Window:</label>
-            <input id="modal-poll-forecast" type="text" value="15 min" readonly class="w-full bg-slate-100 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 font-medium cursor-not-allowed">
-          </div>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-end gap-2 pt-2 border-t border-white/60">
-        <button onclick="closeSendCapacityRequestModal()" class="px-3 py-1.5 text-xs font-bold text-slate-600 hover:text-slate-900 rounded-lg">Cancel</button>
-        <button onclick="executeSendCapacityRequest()" class="px-4 py-1.5 text-xs font-bold text-white bg-sky-600 hover:bg-sky-700 rounded-lg shadow-sm flex items-center gap-1.5 transition">
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.196 1.006.128.832.922z"/></svg>
-          <span>SEND VIA TELEGRAM</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================================ -->
-  <!-- MODAL: CONTACT PROVIDER VIA TELEGRAM (LIQUID GLASS)           -->
-  <!-- ============================================================ -->
-  <div id="contact-provider-modal" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-2xs z-50 flex items-center justify-center p-4">
-    <div class="glass-command max-w-md w-full p-5 shadow-2xl space-y-4">
-      <div class="flex items-center justify-between border-b border-white/60 pb-3">
-        <div class="flex items-center gap-2">
-          <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-700 flex items-center justify-center font-bold">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.196 1.006.128.832.922z"/></svg>
-          </div>
-          <div>
-            <h3 class="text-sm font-bold text-slate-900">CONTACT FLEET VIA TELEGRAM</h3>
-            <p class="text-[11px] text-slate-500 font-medium">EVENTOS Provider Pulse Gateway</p>
-          </div>
-        </div>
-        <button onclick="closeContactProviderModal()" class="text-slate-400 hover:text-slate-700 font-bold p-1">✕</button>
-      </div>
-
-      <div class="p-3 bg-white/70 border border-white/80 rounded-xl space-y-2">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-bold text-slate-700">Official Telegram Bot:</span>
-          <span id="contact-modal-status-badge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">○ NOT CONFIGURED</span>
-        </div>
-        <div class="flex items-center justify-between bg-sky-50/60 p-2 rounded-lg border border-sky-100">
-          <div class="flex items-center gap-2">
-            <span class="text-xs font-bold text-sky-900" id="contact-modal-bot-handle">@hckathn_bot</span>
-          </div>
-          <a id="contact-modal-bot-link" href="https://t.me/hckathn_bot" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 text-xs font-bold bg-sky-600 hover:bg-sky-700 text-white rounded-md shadow-2xs transition inline-flex items-center gap-1">
-            <span>Open in Telegram</span>
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="space-y-2 text-xs text-slate-600">
-        <p class="font-semibold text-slate-700">Provider Connection Instructions:</p>
-        <ol class="list-decimal list-inside space-y-1 text-[11px] text-slate-500">
-          <li>Open the Telegram bot and click <strong>Start</strong> or send <code class="bg-slate-100 px-1 rounded text-slate-700 font-num">/start</code></li>
-          <li>Select your registered provider organisation from the inline menu</li>
-          <li>Reply with real-time operational telemetry (e.g. <code class="bg-slate-100 px-1 rounded text-slate-700">+100 seats</code>, <code class="bg-slate-100 px-1 rounded text-slate-700">82 rooms available</code>, <code class="bg-slate-100 px-1 rounded text-slate-700">delay 20 min</code>, or <code class="bg-slate-100 px-1 rounded text-slate-700">NO CAPACITY</code>)</li>
-        </ol>
-      </div>
-
-      <div class="flex justify-end pt-2 border-t border-white/60">
-        <button onclick="closeContactProviderModal()" class="px-4 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition">Dismiss</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================================ -->
   <!-- FLOATING PROVIDER PULSE POPOVER (Liquid Glass Layer)         -->
   <!-- ============================================================ -->
   <div id="provider-pulse-popover" class="hidden glass-popover fixed top-16 right-16 z-50 max-w-sm w-full p-4 space-y-3 select-none">
@@ -2073,7 +1854,6 @@
           renderZoneDistribution(master.zones);
           renderWeatherCard(master.weather, master.signals?.weather);
           renderWhatsAppPanel(master.whatsapp_integration, master.signals?.whatsapp, master.providers);
-          renderProviderPulseUI(master.provider_pulse, master.providers);
           renderRecommendations(master.recommendations);
           renderTimeline(master.timeline);
           renderLeafletMap(master.venue, master.zones, master.providers, master.weather, activeDigitalTwinData);
@@ -2407,307 +2187,6 @@
             }).catch(e => console.error(e));
         })
         .catch(e => console.error("Error fetching messages:", e));
-    let selectedProviderId = "prov-mumbai-best-01";
-    let cachedProviders = [];
-
-    // ============================================================
-    // PROVIDER PULSE / TELEGRAM STATE & UI SYNCHRONIZATION
-    // ============================================================
-    async function renderProviderPulseUI(pulse, providers) {
-      if (!pulse && currentMasterData?.provider_pulse) {
-        pulse = currentMasterData.provider_pulse;
-      }
-
-      // 1. Overview Cockpit: Status Pill
-      const statusPill = document.getElementById("overview-pulse-status-pill");
-      const configHelper = document.getElementById("overview-pulse-config-helper");
-      const isConnected = Boolean(pulse?.connected);
-
-      if (statusPill) {
-        if (isConnected) {
-          statusPill.innerText = "● CONNECTED";
-          statusPill.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200";
-        } else {
-          statusPill.innerText = "○ NOT CONFIGURED";
-          statusPill.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200";
-        }
-      }
-
-      if (configHelper) {
-        if (isConnected) {
-          configHelper.classList.add("hidden");
-        } else {
-          configHelper.classList.remove("hidden");
-          configHelper.innerText = pulse?.instruction || "Configure TELEGRAM_BOT_TOKEN to activate.";
-        }
-      }
-
-      // 2. Overview Cockpit: Provider Count Chips
-      const totalEl = document.getElementById("overview-pulse-total");
-      const respondedEl = document.getElementById("overview-pulse-responded");
-      const awaitingEl = document.getElementById("overview-pulse-awaiting");
-      if (totalEl) totalEl.innerText = pulse?.total_providers || (providers ? providers.length : 18);
-      if (respondedEl) respondedEl.innerText = pulse?.responded_count || 12;
-      if (awaitingEl) awaitingEl.innerText = pulse?.awaiting_count || 6;
-
-      // 3. Overview Cockpit: Latest Provider Responses List
-      const latestList = document.getElementById("overview-pulse-latest-list");
-      if (latestList && pulse?.latest_responses && pulse.latest_responses.length > 0) {
-        latestList.innerHTML = pulse.latest_responses.map(r => `
-          <div class="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between">
-            <div>
-              <div class="font-bold text-slate-800">${r.provider_name || 'PROVIDER'}</div>
-              <div class="text-[10px] text-slate-500">${r.received_text || 'Recent telemetry'}</div>
-            </div>
-            <span class="font-bold font-num text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">${r.text || 'Available'}</span>
-          </div>
-        `).join('');
-      }
-
-      // 4. Update Header Badges & Bot Links
-      const waBadge = document.getElementById("wa-integration-badge");
-      if (waBadge) {
-        if (isConnected) {
-          waBadge.innerText = `TELEGRAM CONNECTED (${(pulse?.mode || 'polling').toUpperCase()})`;
-          waBadge.className = "text-[11px] font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200";
-        } else {
-          waBadge.innerText = "○ NOT CONFIGURED";
-          waBadge.className = "text-[11px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200";
-        }
-      }
-
-      const botUser = pulse?.bot_username || "hckathn_bot";
-      const hLink = document.getElementById("telegram-header-link");
-      const cHandle = document.getElementById("telegram-channel-handle");
-      const cLink = document.getElementById("telegram-channel-link");
-      const modalBotHandle = document.getElementById("contact-modal-bot-handle");
-      const modalBotLink = document.getElementById("contact-modal-bot-link");
-      const modalStatusBadge = document.getElementById("contact-modal-status-badge");
-
-      if (hLink) { hLink.innerText = `@${botUser}`; hLink.href = `https://t.me/${botUser}`; }
-      if (cHandle) cHandle.innerText = `@${botUser}`;
-      if (cLink) cLink.href = `https://t.me/${botUser}`;
-      if (modalBotHandle) modalBotHandle.innerText = `@${botUser}`;
-      if (modalBotLink) modalBotLink.href = `https://t.me/${botUser}`;
-      if (modalStatusBadge) {
-        if (isConnected) {
-          modalStatusBadge.innerText = "● CONNECTED";
-          modalStatusBadge.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200";
-        } else {
-          modalStatusBadge.innerText = "○ NOT CONFIGURED";
-          modalStatusBadge.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200";
-        }
-      }
-
-      // 5. Fetch Providers from /api/v1/telegram/providers and render roster & selected card
-      try {
-        const pRes = await fetch(`${API_BASE}/telegram/providers`);
-        if (pRes.ok) {
-          cachedProviders = await pRes.json();
-          renderProvidersRoster(cachedProviders);
-          updateSelectedProviderCard();
-          updatePollModalProviderDropdown(cachedProviders);
-        }
-      } catch (e) {
-        console.warn("Could not fetch telegram providers:", e);
-      }
-    }
-
-    function renderProvidersRoster(providers) {
-      const listEl = document.getElementById("wa-providers-list");
-      const countEl = document.getElementById("wa-providers-count");
-      if (!listEl) return;
-      if (countEl && providers) countEl.innerText = `${providers.length} Providers`;
-
-      if (!providers || providers.length === 0) return;
-
-      listEl.innerHTML = providers.map(p => {
-        const isSelected = p.provider_id === selectedProviderId;
-        const isTg = p.telegram_connected;
-        return `
-          <div onclick="selectProvider('${p.provider_id}')" class="p-3 rounded-lg border cursor-pointer transition ${
-            isSelected ? 'border-sky-500 bg-sky-50/70 shadow-xs ring-1 ring-sky-500' : 'border-slate-200 bg-slate-50/50 hover:bg-slate-50'
-          }">
-            <div class="flex items-center justify-between">
-              <span class="font-bold text-xs text-slate-900">${p.name}</span>
-              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${
-                isTg ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-600'
-              }">${isTg ? 'TELEGRAM CONNECTED' : (p.status || 'ACTIVE').toUpperCase()}</span>
-            </div>
-            <div class="mt-1 flex items-center justify-between text-xs text-slate-500 font-medium">
-              <span class="font-num font-semibold text-sky-700">@${p.telegram_username || 'eventos_provider_bot'}</span>
-              <span class="font-bold text-slate-800">${p.available_seats !== undefined ? `${p.available_seats} seats available` : `${p.available_capacity || 0} units`}</span>
-            </div>
-            <div class="mt-1 flex items-center justify-between text-[11px] text-slate-400">
-              <span class="truncate max-w-[170px] text-emerald-700 font-semibold">${p.latest_response || ''}</span>
-              <span class="font-num">${p.last_update_text || '14 sec ago'}</span>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function updateSelectedProviderCard() {
-      const p = cachedProviders.find(x => x.provider_id === selectedProviderId) || cachedProviders[0] || {
-        provider_id: "prov-mumbai-best-01",
-        name: "BEST Shuttle — South Zone",
-        type: "TRANSPORT",
-        status: "ACTIVE",
-        available_seats: 450,
-        total_capacity: 600,
-        telegram_username: "best_mumbai_bot",
-        latest_response: "+100 seats available",
-        last_update_text: "14 sec ago",
-        response_history: []
-      };
-
-      const nameEl = document.getElementById("sel-prov-name");
-      const typeEl = document.getElementById("sel-prov-type");
-      const channelEl = document.getElementById("sel-prov-channel");
-      const statusEl = document.getElementById("sel-prov-status");
-      const capEl = document.getElementById("sel-prov-capacity");
-      const respEl = document.getElementById("sel-prov-latest-response");
-      const updateEl = document.getElementById("sel-prov-last-update");
-      const histEl = document.getElementById("sel-prov-history-list");
-
-      if (nameEl) nameEl.innerText = p.name || "Provider Desk";
-      if (typeEl) typeEl.innerText = (p.type || "TRANSPORT").toUpperCase();
-      if (channelEl) channelEl.innerText = `Telegram (@${p.telegram_username || 'eventos_provider_bot'})`;
-      if (statusEl) {
-        statusEl.innerText = (p.status || "ACTIVE").toUpperCase();
-        statusEl.className = `text-[10px] font-bold px-2 py-0.5 rounded ${
-          p.status === 'ACTIVE' || p.status === 'active' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-600 border border-slate-200'
-        }`;
-      }
-      if (capEl) capEl.innerText = `${p.available_seats !== undefined ? p.available_seats : (p.available_capacity || 0)} available (${p.total_capacity || 0} total)`;
-      if (respEl) respEl.innerText = p.latest_response || "Standby";
-      if (updateEl) updateEl.innerText = p.last_update_text || "14 sec ago";
-
-      if (histEl) {
-        if (p.response_history && p.response_history.length > 0) {
-          histEl.innerHTML = p.response_history.map(h => `
-            <div class="flex items-center justify-between text-[11px] py-1 border-b border-slate-50">
-              <span class="font-medium text-slate-700">${h.direction === 'OUTBOUND' ? 'Dispatched' : 'Received'}: "${h.text}"</span>
-              <span class="font-num text-slate-400">${h.timestamp ? new Date(h.timestamp).toLocaleTimeString() : 'Recent'}</span>
-            </div>
-          `).join('');
-        } else {
-          histEl.innerHTML = `<div class="text-[11px] text-slate-400 italic">No prior messages recorded for this provider.</div>`;
-        }
-      }
-    }
-
-    function selectProvider(provId) {
-      selectedProviderId = provId;
-      renderProvidersRoster(cachedProviders);
-      updateSelectedProviderCard();
-    }
-
-    function updatePollModalProviderDropdown(providers) {
-      const sel = document.getElementById("modal-poll-provider-select");
-      if (!sel || !providers) return;
-      sel.innerHTML = providers.map(p => `
-        <option value="${p.provider_id}" ${p.provider_id === selectedProviderId ? 'selected' : ''}>
-          ${p.name} (@${p.telegram_username || 'eventos_provider_bot'})
-        </option>
-      `).join('');
-    }
-
-    function openSendCapacityRequestModal(providerId) {
-      const modal = document.getElementById("send-capacity-request-modal");
-      if (!modal) return;
-      if (providerId) {
-        selectedProviderId = providerId;
-        const sel = document.getElementById("modal-poll-provider-select");
-        if (sel) sel.value = providerId;
-      }
-      const pulse = currentMasterData?.provider_pulse;
-      const isConnected = Boolean(pulse?.connected);
-      const warnBox = document.getElementById("modal-tg-status-banner");
-      const warnText = document.getElementById("modal-tg-status-text");
-      const warnHint = document.getElementById("modal-tg-status-hint");
-
-      if (warnBox && warnText && warnHint) {
-        if (isConnected) {
-          warnBox.className = "p-2.5 rounded-lg text-xs font-medium border bg-emerald-50/80 border-emerald-200 text-emerald-900 flex items-start gap-2";
-          warnText.innerText = "● CONNECTED:";
-          warnHint.innerText = `Live Telegram Bot delivery active via @${pulse?.bot_username || 'eventos_provider_bot'}.`;
-        } else {
-          warnBox.className = "p-2.5 rounded-lg text-xs font-medium border bg-amber-50/80 border-amber-200 text-amber-900 flex items-start gap-2";
-          warnText.innerText = "○ NOT CONFIGURED:";
-          warnHint.innerText = "Configure TELEGRAM_BOT_TOKEN to activate live Telegram delivery. (Request will be recorded in audit log & dispatched to local provider adapter).";
-        }
-      }
-      modal.classList.remove("hidden");
-    }
-
-    function closeSendCapacityRequestModal() {
-      const modal = document.getElementById("send-capacity-request-modal");
-      if (modal) modal.classList.add("hidden");
-    }
-
-    async function executeSendCapacityRequest() {
-      const provSel = document.getElementById("modal-poll-provider-select");
-      const capInput = document.getElementById("modal-poll-capacity");
-      const reasonInput = document.getElementById("modal-poll-reason");
-
-      const providerId = provSel ? provSel.value : (selectedProviderId || "prov-mumbai-best-01");
-      const requiredCap = capInput ? parseInt(capInput.value, 10) : 120;
-      const weatherTrigger = reasonInput ? reasonInput.value : "Predicted crowd pressure (concourse density 0.78)";
-      const eventId = currentEventId || activeEventId || "mumbai-cricket-match-wankhede";
-
-      try {
-        const res = await fetch(`${API_BASE}/telegram/poll/dispatch`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            provider_id: providerId,
-            event_id: eventId,
-            required_capacity: requiredCap,
-            weather_trigger: weatherTrigger
-          })
-        });
-        const data = await res.json();
-        if (res.ok) {
-          showToast(`Capacity Request Dispatched: ${data.message || 'Sent via Telegram Gateway'}`, 'success');
-          closeSendCapacityRequestModal();
-          await refreshDashboardState();
-        } else {
-          showToast(`Error: ${data.detail || 'Failed to dispatch request'}`, 'danger');
-        }
-      } catch (e) {
-        showToast(`Error: ${e.message}`, 'danger');
-      }
-    }
-
-    function openContactProviderModal(providerId) {
-      const modal = document.getElementById("contact-provider-modal");
-      if (!modal) return;
-      const pulse = currentMasterData?.provider_pulse;
-      const botUser = pulse?.bot_username || "hckathn_bot";
-      const isConnected = Boolean(pulse?.connected);
-
-      const handle = document.getElementById("contact-modal-bot-handle");
-      const link = document.getElementById("contact-modal-bot-link");
-      const badge = document.getElementById("contact-modal-status-badge");
-
-      if (handle) handle.innerText = `@${botUser}`;
-      if (link) link.href = `https://t.me/${botUser}`;
-      if (badge) {
-        if (isConnected) {
-          badge.innerText = "● CONNECTED";
-          badge.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200";
-        } else {
-          badge.innerText = "○ NOT CONFIGURED";
-          badge.className = "text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200";
-        }
-      }
-      modal.classList.remove("hidden");
-    }
-
-    function closeContactProviderModal() {
-      const modal = document.getElementById("contact-provider-modal");
-      if (modal) modal.classList.add("hidden");
     }
 
     // Send Deterministic Telegram Operational Response into Backend
@@ -2777,6 +2256,44 @@
           await refreshDashboardState();
         } else {
           showToast(`Demo failed: ${data.detail || 'Error running demo'}`, 'danger');
+        }
+      } catch (e) {
+        showToast(`Error: ${e.message}`, 'danger');
+      }
+    }
+
+    // Run Simulated Crowd Alert Closed Loop (Digital Twin -> Staff Bot -> Diversion -> Risk Stabilized)
+    async function runSimulatedCrowdAlert() {
+      try {
+        showToast("Dispatching simulated crowd surge alert to Staff Bot...", "info");
+        const res = await fetch(`${API_BASE}/operations-network/simulate-crowd-alert`, {
+          method: "POST"
+        });
+        const data = await res.json();
+        if (res.ok && data.status === "ok") {
+          showToast(`Crowd Closed-Loop Done: Alert dispatched to Zone ${data.zone_id}, diversion executed, risk stabilized to WATCH!`, 'success');
+          await refreshDashboardState();
+        } else {
+          showToast(`Crowd Alert failed: ${data.detail || 'Error'}`, 'danger');
+        }
+      } catch (e) {
+        showToast(`Error: ${e.message}`, 'danger');
+      }
+    }
+
+    // Run Simulated Hotel Request Closed Loop (Visitor Bot -> EVENTOS -> Staff Bot -> Provider Accept)
+    async function runSimulatedHotelRequest() {
+      try {
+        showToast("Processing simulated visitor hotel booking request...", "info");
+        const res = await fetch(`${API_BASE}/operations-network/simulate-hotel-request`, {
+          method: "POST"
+        });
+        const data = await res.json();
+        if (res.ok && data.status === "ok") {
+          showToast(`Hotel Closed-Loop Done: Booking ${data.request_id} accepted & confirmed to visitor!`, 'success');
+          await refreshDashboardState();
+        } else {
+          showToast(`Hotel Request failed: ${data.detail || 'Error'}`, 'danger');
         }
       } catch (e) {
         showToast(`Error: ${e.message}`, 'danger');
@@ -3127,20 +2644,15 @@
           html: `<div class="bg-emerald-600 text-white p-1 rounded-full border-2 border-white shadow-md cursor-pointer hover:scale-110 transition"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>`,
           iconSize: [24, 24]
         })
-      }).bindTooltip("<b>BEST Feeder Bus Depot 4</b><br>450 seats available • Provider Pulse").addTo(mapLayers.transit);
+      }).bindTooltip("<b>BEST Feeder Bus Depot 4</b><br>120 seats available").addTo(mapLayers.transit);
       m2.on('click', () => {
-        const pulse = currentMasterData?.provider_pulse;
-        const isConn = Boolean(pulse?.connected);
         showSelectedObjectPanel({
-          isProviderPulse: true,
-          type: 'transit_provider',
-          providerId: 'prov-mumbai-best-01',
-          name: 'BEST SHUTTLE',
-          connected: isConn,
-          capacityText: '450 seats available',
-          latestResponse: 'Latest: +100 seats',
-          lastUpdate: '14 sec ago',
-          util: '120 active standby seats'
+          type: 'transit',
+          name: 'BEST Feeder Bus Depot 4',
+          occ: '350 queued passengers',
+          util: '120 active standby seats',
+          flow: 'Buses dispatched every 5 min',
+          forecast: 'VERIFIED STANDBY'
         });
       });
 
@@ -3413,85 +2925,28 @@
     function showSelectedObjectPanel(data) {
       const panel = document.getElementById("map-selected-object-panel");
       if (!panel || !data) return;
+      const titleEl = document.getElementById("sel-obj-title");
+      const occEl = document.getElementById("sel-obj-occ");
+      const utilEl = document.getElementById("sel-obj-util");
+      const flowEl = document.getElementById("sel-obj-flow");
+      const forecastEl = document.getElementById("sel-obj-forecast");
+      const btnEl = document.getElementById("sel-obj-action-btn");
 
-      if (data.isProviderPulse) {
-        panel.innerHTML = `
-          <div class="flex items-center justify-between border-b border-white/60 pb-2">
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full ${data.connected ? 'bg-emerald-500' : 'bg-slate-400'} animate-pulse"></span>
-              <span class="font-bold text-[10px] text-sky-700 tracking-wider uppercase font-semibold">PROVIDER PULSE</span>
-            </div>
-            <button onclick="closeSelectedObjectPanel()" class="text-slate-400 hover:text-slate-700 text-xs font-bold p-1">✕</button>
-          </div>
-          <div class="space-y-2 pt-1">
-            <div class="flex items-center justify-between">
-              <h3 class="font-bold text-sm text-slate-900 tracking-tight">${data.name || 'BEST SHUTTLE'}</h3>
-              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${data.connected ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-600 border border-slate-200'}">
-                ${data.connected ? '● TELEGRAM CONNECTED' : '○ NOT CONFIGURED'}
-              </span>
-            </div>
-            <div class="grid grid-cols-2 gap-2 text-xs">
-              <div class="p-2 rounded-lg bg-white/50 border border-white/60">
-                <div class="text-[10px] text-slate-500 font-bold uppercase">Available Units</div>
-                <div class="text-sm font-bold font-num text-slate-900">${data.capacityText || '450 seats available'}</div>
-                <div class="text-[10px] text-slate-500">${data.util || 'Active fleet standby'}</div>
-              </div>
-              <div class="p-2 rounded-lg bg-white/50 border border-white/60">
-                <div class="text-[10px] text-slate-500 font-bold uppercase">Latest Telemetry</div>
-                <div class="text-sm font-bold font-num text-emerald-600">${data.latestResponse || 'Latest: +100 seats'}</div>
-                <div class="text-[10px] text-slate-500">${data.lastUpdate || '14 sec ago'}</div>
-              </div>
-            </div>
-          </div>
-          <div class="flex items-center justify-end gap-2 pt-2 border-t border-white/60">
-            <button onclick="openContactProviderModal('${data.providerId || 'prov-mumbai-best-01'}')" class="px-2.5 py-1 text-xs font-bold text-slate-700 bg-white/80 hover:bg-white border border-slate-200 rounded-lg shadow-2xs transition">
-              CONTACT
-            </button>
-            <button onclick="openSendCapacityRequestModal('${data.providerId || 'prov-mumbai-best-01'}')" class="px-3 py-1 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-xs transition">
-              REQUEST CAPACITY
-            </button>
-          </div>
-        `;
-        panel.classList.remove('hidden');
-        return;
-      }
-
-      // Standard object panel markup
-      panel.innerHTML = `
-        <div class="flex items-center justify-between border-b border-white/60 pb-2">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
-            <span id="sel-obj-title" class="font-bold text-xs text-slate-900 tracking-tight">${(data.name || 'Object Details').toUpperCase()}</span>
-          </div>
-          <button onclick="closeSelectedObjectPanel()" class="text-slate-400 hover:text-slate-700 text-xs font-bold p-1">✕</button>
-        </div>
-        <div class="grid grid-cols-2 gap-2 text-xs">
-          <div class="p-2 rounded-lg bg-white/50 border border-white/60">
-            <div class="text-[10px] text-slate-500 font-bold uppercase">Occupancy</div>
-            <div id="sel-obj-occ" class="text-sm font-bold font-num text-slate-900">${data.occ || '--'}</div>
-            <div id="sel-obj-util" class="text-[10px] text-slate-500">${data.util || 'Active Telemetry'}</div>
-          </div>
-          <div class="p-2 rounded-lg bg-white/50 border border-white/60">
-            <div class="text-[10px] text-slate-500 font-bold uppercase">Flow Vectors</div>
-            <div id="sel-obj-flow" class="text-sm font-bold font-num text-indigo-600">${data.flow || 'Normal Inflow / Outflow'}</div>
-            <div class="text-[10px] text-slate-500">Net Flow: active</div>
-          </div>
-        </div>
-        <div class="flex items-center justify-between text-xs pt-1">
-          <span class="text-slate-500 font-medium">Forecast: <strong id="sel-obj-forecast" class="text-amber-600 font-bold">${data.forecast || 'STABLE'}</strong></span>
-          <button id="sel-obj-action-btn" class="px-2.5 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] shadow-xs transition">
-            ${data.type === 'camera' ? 'Open CCTV Camera →' : data.type === 'transit' ? 'Open Fleet Providers →' : 'Open Zone Intelligence →'}
-          </button>
-        </div>
-      `;
-      const btn = panel.querySelector("#sel-obj-action-btn");
-      if (btn) {
+      if (titleEl) titleEl.innerText = (data.name || 'Object Details').toUpperCase();
+      if (occEl) occEl.innerText = data.occ || '--';
+      if (utilEl) utilEl.innerText = data.util || 'Active Telemetry';
+      if (flowEl) flowEl.innerText = data.flow || 'Normal Inflow / Outflow';
+      if (forecastEl) forecastEl.innerText = data.forecast || 'STABLE';
+      if (btnEl) {
         if (data.type === 'camera') {
-          btn.onclick = () => selectCameraFromMap(data.id || 'CAM-01');
+          btnEl.innerText = "Open CCTV Camera →";
+          btnEl.onclick = () => selectCameraFromMap(data.id || 'CAM-01');
         } else if (data.type === 'transit') {
-          btn.onclick = () => switchMainView('providers');
+          btnEl.innerText = "Open Fleet Providers →";
+          btnEl.onclick = () => switchMainView('providers');
         } else {
-          btn.onclick = () => switchMainView('zones');
+          btnEl.innerText = "Open Zone Intelligence →";
+          btnEl.onclick = () => switchMainView('zones');
         }
       }
       panel.classList.remove('hidden');
