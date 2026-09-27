@@ -98,7 +98,7 @@ class TestCCTVComputerVision(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         data = res.json()
         self.assertIn("cameras", data)
-        self.assertEqual(len(data["cameras"]), 3)
+        self.assertEqual(len(data["cameras"]), 4)
 
     def test_api_cv_telemetry(self):
         """Test GET /api/v1/cv/telemetry/{camera_id} endpoint."""

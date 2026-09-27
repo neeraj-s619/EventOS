@@ -419,10 +419,10 @@
           <kbd class="text-[10px] font-bold px-1.5 py-0.5 bg-white rounded border border-slate-200 text-slate-500">⌘K</kbd>
         </button>
 
-        <!-- Weather Shock Simulator Trigger -->
-        <button onclick="launchFullSimulation()" class="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-sm transition">
+        <!-- Pitch Demo Extreme Scenario Trigger -->
+        <button onclick="runCombinedExtremeDemo()" class="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-rose-600 hover:from-indigo-700 hover:to-rose-700 rounded-lg shadow-sm transition animate-pulse" title="Run 3-minute pitch demo story across all sensors">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          <span>Simulate Surge</span>
+          <span>⚡ Run Combined Extreme Scenario (Pitch Demo)</span>
         </button>
 
         <!-- Dropdown Menu -->
@@ -1020,113 +1020,195 @@
     <!-- VIEW CONTAINER: DIGITAL TWIN & SIMULATION LAB                -->
     <!-- ============================================================ -->
     <div id="view-twin" class="hidden p-5 space-y-4">
+      
+      <!-- Top Operational Provenance & Scenario Header -->
+      <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 animate-pulse"></span>
+            <h2 class="text-sm font-bold text-slate-900 tracking-tight">EVENTOS Scenario Engine & What-If Simulation Lab</h2>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">PHYSICS-BASED COUNTERFACTUAL</span>
+          </div>
+          <p class="text-xs text-slate-500 font-medium mt-0.5">Perturb real sensor streams (CCTV, PDR, GPS, Weather) into the Digital Twin without mutating production ground truth.</p>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <button onclick="runCombinedExtremeDemo()" class="px-3.5 py-1.5 bg-gradient-to-r from-indigo-600 to-rose-600 hover:from-indigo-700 hover:to-rose-700 text-white font-bold text-xs rounded-lg shadow-sm transition flex items-center gap-1.5 animate-pulse" title="Run full 3-minute pitch demo story">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span>⚡ Run Combined Extreme Scenario (Pitch Demo)</span>
+          </button>
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
         
-        <!-- Controls Column (5 Cols) -->
+        <!-- Controls & Sensor Simulators Column (5 Cols) -->
         <div class="lg:col-span-5 space-y-3">
-          <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
-            <h3 class="text-sm font-bold text-slate-900 mb-1">Weather & Egress Physics Simulation</h3>
-            <p class="text-xs text-slate-500 font-medium mb-4">Counterfactual What-If physics engine. Computes impact on concourse friction & transit demand.</p>
+          
+          <!-- Scenario Selector Card -->
+          <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-800">Operational Scenarios</span>
+              <span id="active-scenario-tag" class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700">6 AVAILABLE</span>
+            </div>
 
-            <!-- Sliders -->
-            <div class="space-y-4">
-              <div>
-                <div class="flex items-center justify-between text-xs font-semibold mb-1">
-                  <span class="text-slate-700">Precipitation Rate:</span>
-                  <span id="dt-slider-rain-val" class="font-num font-bold text-indigo-600">20.0 mm/h</span>
+            <!-- 6 Deterministic Scenarios Grid -->
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="executeNamedScenario('CROWD_SURGE')" class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70 hover:bg-indigo-50/60 hover:border-indigo-200 text-left transition space-y-1">
+                <div class="font-bold text-xs text-slate-900 flex items-center justify-between">
+                  <span>1. Crowd Surge</span>
+                  <span class="text-[9px] px-1 bg-amber-100 text-amber-800 rounded">CROWD</span>
                 </div>
-                <input id="dt-input-rain" type="range" min="0" max="60" step="2.5" value="20" oninput="onWhatIfInputChanged(this.value)" class="w-full">
-                <div class="flex justify-between text-[11px] text-slate-500 font-medium mt-1">
-                  <span>Dry (0)</span>
-                  <span>Moderate (15)</span>
-                  <span>Torrential Monsoon (60)</span>
-                </div>
-              </div>
+                <p class="text-[10px] text-slate-500 font-medium">Zone A inflow +150/min, threshold breach in 8m</p>
+              </button>
 
-              <!-- Preset Scenarios -->
-              <div>
-                <span class="text-xs font-bold text-slate-700 block mb-2">Preset Scenarios:</span>
-                <div class="grid grid-cols-2 gap-2">
-                  <button onclick="applyPresetScenario('normal')" class="px-2.5 py-2 text-xs font-semibold rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-left">
-                    ☀️ Normal Conditions
-                  </button>
-                  <button onclick="applyPresetScenario('moderate_rain')" class="px-2.5 py-2 text-xs font-semibold rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-left">
-                    🌦️ Moderate Rain
-                  </button>
-                  <button onclick="applyPresetScenario('heavy_rain')" class="px-2.5 py-2 text-xs font-bold rounded-lg border border-slate-200 bg-indigo-50 text-indigo-700 text-left">
-                    🌧️ Heavy Rain (Monsoon)
-                  </button>
-                  <button onclick="applyPresetScenario('thunderstorm')" class="px-2.5 py-2 text-xs font-semibold rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-left">
-                    ⚡ Squall & Thunderstorm
-                  </button>
+              <button onclick="executeNamedScenario('HEAVY_RAIN')" class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70 hover:bg-indigo-50/60 hover:border-indigo-200 text-left transition space-y-1">
+                <div class="font-bold text-xs text-slate-900 flex items-center justify-between">
+                  <span>2. Heavy Rain</span>
+                  <span class="text-[9px] px-1 bg-sky-100 text-sky-800 rounded">WEATHER</span>
                 </div>
-              </div>
+                <p class="text-[10px] text-slate-500 font-medium">25 mm/h rain, concourse indoor load +35%</p>
+              </button>
 
-              <button onclick="executeDigitalTwinSimulation()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg shadow-sm transition">
-                Run Counterfactual Physics Simulation
+              <button onclick="executeNamedScenario('GATE_CLOSURE')" class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70 hover:bg-indigo-50/60 hover:border-indigo-200 text-left transition space-y-1">
+                <div class="font-bold text-xs text-slate-900 flex items-center justify-between">
+                  <span>3. Gate Closure</span>
+                  <span class="text-[9px] px-1 bg-rose-100 text-rose-800 rounded">INGRESS</span>
+                </div>
+                <p class="text-[10px] text-slate-500 font-medium">Gate A locked, 180 ppl/min diverted to Gate B</p>
+              </button>
+
+              <button onclick="executeNamedScenario('TRANSPORT_FAILURE')" class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70 hover:bg-indigo-50/60 hover:border-indigo-200 text-left transition space-y-1">
+                <div class="font-bold text-xs text-slate-900 flex items-center justify-between">
+                  <span>4. Transit Outage</span>
+                  <span class="text-[9px] px-1 bg-purple-100 text-purple-800 rounded">FLEET</span>
+                </div>
+                <p class="text-[10px] text-slate-500 font-medium">3 buses breakdown, transit gap deficit</p>
+              </button>
+
+              <button onclick="executeNamedScenario('HOSPITALITY_SHOCK')" class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70 hover:bg-indigo-50/60 hover:border-indigo-200 text-left transition space-y-1">
+                <div class="font-bold text-xs text-slate-900 flex items-center justify-between">
+                  <span>5. Hotel Shock</span>
+                  <span class="text-[9px] px-1 bg-emerald-100 text-emerald-800 rounded">HOTELS</span>
+                </div>
+                <p class="text-[10px] text-slate-500 font-medium">100 hotel rooms offline, Telegram auto-query</p>
+              </button>
+
+              <button onclick="executeNamedScenario('COMBINED_EXTREME_EVENT')" class="p-2.5 rounded-lg border border-indigo-300 bg-indigo-50/80 hover:bg-indigo-100 text-left transition space-y-1">
+                <div class="font-bold text-xs text-indigo-950 flex items-center justify-between">
+                  <span>6. Combined Event</span>
+                  <span class="text-[9px] px-1 bg-rose-600 text-white rounded font-bold">PITCH DEMO</span>
+                </div>
+                <p class="text-[10px] text-indigo-700 font-medium">Surge + Rain + Fleet failure multi-sector crisis</p>
               </button>
             </div>
           </div>
 
-          <!-- Counterfactual Deltas -->
-          <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs">
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-800 block mb-3">Counterfactual Impact Deltas</span>
-            <div class="grid grid-cols-2 gap-3 text-xs">
-              <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
-                <span class="text-slate-500 block text-[11px] font-semibold">Crowd Density Delta:</span>
-                <span id="dt-comp-delta-crowd" class="text-sm font-bold font-num text-rose-600">+1,420</span>
-                <div class="text-[11px] text-slate-500 font-medium mt-1">Base: <span id="dt-comp-base-crowd" class="font-num">21,370</span> → Sim: <span id="dt-comp-sim-crowd" class="font-num">22,790</span></div>
+          <!-- GPS Fleet Live Simulator Card -->
+          <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs space-y-2.5">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-800">GPS Fleet Trajectory Engine</span>
               </div>
-              <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
-                <span class="text-slate-500 block text-[11px] font-semibold">Transit Deficit Gap:</span>
-                <span id="dt-comp-delta-trans" class="text-sm font-bold font-num text-rose-600">-10,518</span>
-                <div class="text-[11px] text-slate-500 font-medium mt-1">Avail: 700 → Sim Req: <span id="dt-comp-sim-trans" class="font-num">11,218</span></div>
+              <span id="gps-fleet-status-badge" class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700">● 4 BUSES EN ROUTE</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                <span class="text-slate-500 text-[10px] block font-semibold">Available Fleet Seats</span>
+                <span id="gps-avail-seats" class="text-base font-bold font-num text-slate-900">230 Seats</span>
+              </div>
+              <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                <span class="text-slate-500 text-[10px] block font-semibold">Transit Gap Status</span>
+                <span id="gps-gap-status" class="text-base font-bold text-emerald-600 font-num">BALANCED</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 pt-1">
+              <button onclick="simulateFleetFailure()" class="flex-1 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-[11px] rounded-lg transition">
+                ⚠️ Break Down 3 Buses
+              </button>
+              <button onclick="resetFleetSimulator()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px] rounded-lg transition">
+                Reset Fleet
+              </button>
+            </div>
+          </div>
+
+          <!-- PDR Replay Mobility Card -->
+          <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-800">PDR Mobility Stream Replay</span>
+              </div>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-sky-50 text-sky-700">● REPLAY ACTIVE</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-xs text-center">
+              <div class="p-2 bg-slate-50 rounded border border-slate-200">
+                <span class="text-slate-500 text-[10px] block">Devices</span>
+                <span id="pdr-stat-devices" class="font-bold font-num text-slate-900">390</span>
+              </div>
+              <div class="p-2 bg-slate-50 rounded border border-slate-200">
+                <span class="text-slate-500 text-[10px] block">Mean Speed</span>
+                <span id="pdr-stat-speed" class="font-bold font-num text-slate-900">1.10 m/s</span>
+              </div>
+              <div class="p-2 bg-slate-50 rounded border border-slate-200">
+                <span class="text-slate-500 text-[10px] block">Flow Rate</span>
+                <span id="pdr-stat-flow" class="font-bold font-num text-indigo-600">+180/m</span>
               </div>
             </div>
           </div>
+
         </div>
 
-        <!-- Cascading Domino Chain Visualizer (7 Cols) -->
+        <!-- Right: Baseline vs What-If Comparison Matrix + Replay Timeline (7 Cols) -->
         <div class="lg:col-span-7 space-y-3">
-          <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
-            <div class="flex items-center justify-between mb-4">
+          
+          <!-- Baseline vs What-If Matrix Card -->
+          <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs space-y-3">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
               <div>
-                <h3 class="text-sm font-bold text-slate-900">Cascading Domino Risk Chain</h3>
-                <p class="text-xs text-slate-500 font-medium">Multi-stage propagation from rainfall to concourse friction, transit surges, and crowd bottlenecks.</p>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800" id="matrix-scenario-title">Baseline vs. What-If Counterfactual Matrix</h3>
+                <p class="text-[11px] text-slate-500 font-medium" id="matrix-scenario-desc">Comparing operational equilibrium against simulated perturbation.</p>
               </div>
-              <span id="dt-cascade-status-badge" class="text-xs font-bold px-2.5 py-1 rounded bg-amber-50 text-amber-700 border border-amber-200">
-                EVALUATED
-              </span>
+              <span id="matrix-scenario-severity" class="text-xs font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200">CRITICAL</span>
             </div>
 
-            <div id="dt-cascade-chain-container" class="space-y-2">
-              <!-- Dynamically populated -->
-              <div class="p-3 rounded-lg border border-slate-200 bg-slate-50 text-xs">
-                <span class="font-bold text-slate-800">1. Weather Condition:</span>
-                <span class="text-slate-600 font-medium ml-2">Heavy Rain (20.0 mm/h)</span>
-              </div>
-              <div class="p-3 rounded-lg border border-slate-200 bg-slate-50 text-xs">
-                <span class="font-bold text-slate-800">2. Concourse Friction:</span>
-                <span class="text-slate-600 font-medium ml-2">-50% outdoor flow velocity across concourses</span>
-              </div>
-              <div class="p-3 rounded-lg border border-slate-200 bg-slate-50 text-xs">
-                <span class="font-bold text-slate-800">3. Transit Surge:</span>
-                <span class="text-slate-600 font-medium ml-2">11,218 seats required (demand x1.50)</span>
-              </div>
-              <div class="p-3 rounded-lg border border-slate-200 bg-slate-50 text-xs">
-                <span class="font-bold text-slate-800">4. WhatsApp Telemetry:</span>
-                <span class="text-slate-600 font-medium ml-2">Operational poll dispatched to transport network</span>
-              </div>
-            </div>
-
-            <!-- Recommended Actions from Twin -->
-            <div class="mt-4 pt-4 border-t border-slate-100">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-800 block mb-2">Simulated Mitigations</span>
-              <div id="dt-recommendations-list" class="space-y-1.5 text-xs text-slate-600">
-                <p class="font-medium">Simulate a weather event to generate proactive mitigation recommendations.</p>
-              </div>
+            <!-- Comparison Table -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs text-left">
+                <thead class="bg-slate-50 text-slate-500 font-bold uppercase text-[10px]">
+                  <tr>
+                    <th class="py-2 px-2.5 rounded-l">Metric</th>
+                    <th class="py-2 px-2.5">Baseline</th>
+                    <th class="py-2 px-2.5">What-If Projection</th>
+                    <th class="py-2 px-2.5">Delta</th>
+                    <th class="py-2 px-2.5 rounded-r">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="matrix-comparison-tbody" class="divide-y divide-slate-100 font-medium">
+                  <!-- Dynamically populated via executeNamedScenario -->
+                </tbody>
+              </table>
             </div>
           </div>
+
+          <!-- Chronological Cause-and-Effect Event Timeline -->
+          <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-xs space-y-3">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Operational Replay Timeline (Cause & Effect)</h3>
+              </div>
+              <span class="text-[10px] font-bold text-slate-500 font-num">00:00 ──▶ 01:00</span>
+            </div>
+
+            <!-- Timeline Items Container -->
+            <div id="timeline-chronology-container" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+              <!-- Dynamically populated via fetchTimelineEvents -->
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -1207,27 +1289,32 @@
             COMPUTER VISION ACTIVE
           </span>
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-200">
-            3 FEEDS CONNECTED
+            4 FEEDS CONNECTED
           </span>
         </div>
       </div>
 
       <!-- Camera Selector Switcher Tabs -->
       <div class="flex flex-wrap items-center gap-2 p-1.5 bg-slate-100/80 rounded-xl border border-slate-200/80">
-        <button id="tab-cam-CAM-01" onclick="selectCctvCamera('CAM-01')" class="px-3.5 py-2 rounded-lg text-xs font-bold bg-indigo-600 text-white shadow-xs transition flex items-center gap-2">
+        <button id="tab-cam-CAM-01" onclick="selectCctvCamera('CAM-01')" class="px-3 py-2 rounded-lg text-xs font-bold bg-indigo-600 text-white shadow-xs transition flex items-center gap-1.5">
           <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span>CAM-01 · Stadium Main Entrance</span>
-          <span class="text-[10px] font-semibold bg-white/20 px-1.5 py-0.5 rounded">Zone A Turnstiles</span>
+          <span>CAM-01 · Gate A Main Entrance</span>
+          <span class="text-[10px] font-semibold bg-white/20 px-1.5 py-0.5 rounded">Zone A Bowl</span>
         </button>
-        <button id="tab-cam-CAM-02" onclick="selectCctvCamera('CAM-02')" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition flex items-center gap-2 border border-transparent hover:border-slate-200">
+        <button id="tab-cam-CAM-02" onclick="selectCctvCamera('CAM-02')" class="px-3 py-2 rounded-lg text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition flex items-center gap-1.5 border border-transparent hover:border-slate-200">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span>CAM-02 · North Concourse & Ramp</span>
-          <span class="text-[10px] font-semibold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Zone B Access</span>
+          <span>CAM-02 · North Concourse Ramp</span>
+          <span class="text-[10px] font-semibold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Zone B North</span>
         </button>
-        <button id="tab-cam-CAM-03" onclick="selectCctvCamera('CAM-03')" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition flex items-center gap-2 border border-transparent hover:border-slate-200">
+        <button id="tab-cam-CAM-03" onclick="selectCctvCamera('CAM-03')" class="px-3 py-2 rounded-lg text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition flex items-center gap-1.5 border border-transparent hover:border-slate-200">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span>CAM-03 · Gate 3 Queue & Outer Perimeter</span>
-          <span class="text-[10px] font-semibold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Zone C Holding</span>
+          <span>CAM-03 · Gate 3 Queue</span>
+          <span class="text-[10px] font-semibold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Zone C Marine</span>
+        </button>
+        <button id="tab-cam-CAM-04" onclick="selectCctvCamera('CAM-04')" class="px-3 py-2 rounded-lg text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 transition flex items-center gap-1.5 border border-transparent hover:border-slate-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>CAM-04 · Gate B Pavilion Link</span>
+          <span class="text-[10px] font-semibold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Gate B Upper</span>
         </button>
       </div>
 
@@ -1859,6 +1946,13 @@
           renderLeafletMap(master.venue, master.zones, master.providers, master.weather, activeDigitalTwinData);
           if (!activeDigitalTwinData && master.digital_twin) {
             renderDigitalTwinPanel(master.digital_twin, master.zones, master.providers, master.weather);
+          }
+          await fetchGpsFleet();
+          await fetchPdrStream();
+          await fetchTimelineEvents();
+          const matrixTbody = document.getElementById("matrix-comparison-tbody");
+          if (matrixTbody && matrixTbody.children.length === 0) {
+            executeNamedScenario('COMBINED_EXTREME_EVENT');
           }
           animateProgressBar();
           const lastEl = document.getElementById("last-updated-text");
@@ -2766,7 +2860,7 @@
         player.src = `${API_BASE}/cv/stream/${camId}?t=${Date.now()}`;
       }
 
-      ['CAM-01', 'CAM-02', 'CAM-03'].forEach(id => {
+      ['CAM-01', 'CAM-02', 'CAM-03', 'CAM-04'].forEach(id => {
         const tab = document.getElementById(`tab-cam-${id}`);
         if (tab) {
           if (id === camId) {
@@ -2779,6 +2873,189 @@
 
       fetchCctvTelemetry();
     }
+
+    // Scenario Engine & Pitch Demo Controllers
+    async function executeNamedScenario(scenarioKey) {
+      try {
+        showToast(`Executing Operational Scenario: ${scenarioKey}...`, "info");
+        const res = await fetch(`${API_BASE}/scenarios/execute`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ scenario_key: scenarioKey })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          renderScenarioMatrix(data);
+          showToast(`Scenario Applied: ${data.name}. Severity: ${data.severity}`, data.severity === 'CRITICAL' ? 'danger' : 'warning');
+          await fetchTimelineEvents();
+        } else {
+          showToast(`Scenario failed: ${data.detail || 'Error'}`, "danger");
+        }
+      } catch (e) {
+        showToast(`Error: ${e.message}`, "danger");
+      }
+    }
+
+    function renderScenarioMatrix(data) {
+      if (!data) return;
+      const titleEl = document.getElementById("matrix-scenario-title");
+      const descEl = document.getElementById("matrix-scenario-desc");
+      const sevEl = document.getElementById("matrix-scenario-severity");
+      const tbody = document.getElementById("matrix-comparison-tbody");
+
+      if (titleEl) titleEl.innerText = `${data.name} — Baseline vs What-If Matrix`;
+      if (descEl) descEl.innerText = data.description || "";
+      if (sevEl) {
+        sevEl.innerText = data.severity;
+        sevEl.className = `text-xs font-bold px-2 py-0.5 rounded ${
+          data.severity === 'CRITICAL' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-amber-50 text-amber-700 border border-amber-200'
+        }`;
+      }
+
+      if (tbody && data.comparison_table) {
+        tbody.innerHTML = "";
+        data.comparison_table.forEach(row => {
+          const tr = document.createElement("tr");
+          tr.className = "hover:bg-slate-50/60 transition";
+          const statusBadge = row.status === 'CRITICAL' 
+            ? '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800">BREACH</span>'
+            : (row.status === 'WARNING'
+                ? '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">ELEVATED</span>'
+                : '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">SAFE</span>');
+
+          tr.innerHTML = `
+            <td class="py-2.5 px-2.5 font-bold text-slate-800">${row.metric_name}</td>
+            <td class="py-2.5 px-2.5 text-slate-600 font-num">${row.baseline_value}</td>
+            <td class="py-2.5 px-2.5 font-bold font-num text-slate-900">${row.whatif_value}</td>
+            <td class="py-2.5 px-2.5 font-num font-semibold ${row.status === 'CRITICAL' ? 'text-rose-600' : 'text-slate-700'}">${row.delta}</td>
+            <td class="py-2.5 px-2.5">${statusBadge}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+    }
+
+    async function runCombinedExtremeDemo() {
+      try {
+        switchMainView('twin');
+        showToast("⚡ INITIATING 3-MINUTE PITCH DEMO: Combined Surge + Rain + Transit Outage...", "warning");
+        await executeNamedScenario('COMBINED_EXTREME_EVENT');
+        await simulateFleetFailure();
+        await fetchTimelineEvents();
+        await refreshDashboardState();
+        showToast("Multi-Sector Cascading Crisis Active: Nugen AI is synthesizing contingency recommendations.", "danger");
+      } catch (e) {
+        showToast(`Demo error: ${e.message}`, "danger");
+      }
+    }
+
+    async function fetchTimelineEvents() {
+      try {
+        const res = await fetch(`${API_BASE}/timeline/events`);
+        if (res.ok) {
+          const data = await res.json();
+          renderTimelineChronology(data.timeline || []);
+        }
+      } catch (err) {
+        console.warn("Timeline fetch error:", err);
+      }
+    }
+
+    function renderTimelineChronology(events) {
+      const container = document.getElementById("timeline-chronology-container");
+      if (!container || !events) return;
+      container.innerHTML = "";
+
+      events.forEach(ev => {
+        const div = document.createElement("div");
+        div.className = "p-2.5 rounded-lg border border-slate-200/80 bg-slate-50/70 hover:bg-slate-50 transition text-xs space-y-1";
+        const badgeColor = ev.badge_style === 'emerald' ? 'bg-emerald-100 text-emerald-800' : (ev.badge_style === 'rose' ? 'bg-rose-100 text-rose-800' : (ev.badge_style === 'amber' ? 'bg-amber-100 text-amber-800' : 'bg-indigo-100 text-indigo-800'));
+
+        div.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="text-[9px] font-bold px-1.5 py-0.5 rounded ${badgeColor}">${ev.system_source}</span>
+              <span class="font-bold text-slate-800">${ev.headline}</span>
+            </div>
+            <span class="font-num text-[10px] text-slate-400 font-semibold">${ev.timestamp}</span>
+          </div>
+          <p class="text-[11px] text-slate-600 font-medium">${ev.details}</p>
+          ${ev.metric_delta ? `<div class="text-[10px] font-bold font-num text-indigo-700">${ev.metric_delta}</div>` : ''}
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    async function fetchGpsFleet() {
+      try {
+        const res = await fetch(`${API_BASE}/gps/fleet`);
+        if (res.ok) {
+          const data = await res.json();
+          const seatsEl = document.getElementById("gps-avail-seats");
+          const gapEl = document.getElementById("gps-gap-status");
+          const badgeEl = document.getElementById("gps-fleet-status-badge");
+
+          if (seatsEl) seatsEl.innerText = `${data.total_available_seats} Seats`;
+          if (gapEl) {
+            gapEl.innerText = data.capacity_gap_status;
+            gapEl.className = `text-base font-bold font-num ${data.capacity_gap_status === 'DEFICIT' ? 'text-rose-600' : 'text-emerald-600'}`;
+          }
+          if (badgeEl) {
+            badgeEl.innerText = `● ${data.active_vehicles} BUSES EN ROUTE (${data.offline_vehicles} OFFLINE)`;
+            badgeEl.className = `text-[10px] font-bold px-1.5 py-0.5 rounded ${data.offline_vehicles > 0 ? 'bg-rose-50 text-rose-700' : 'bg-emerald-50 text-emerald-700'}`;
+          }
+        }
+      } catch (err) {
+        console.warn("GPS fleet error:", err);
+      }
+    }
+
+    async function simulateFleetFailure() {
+      try {
+        const res = await fetch(`${API_BASE}/gps/fleet/simulate-failure`, { method: "POST" });
+        if (res.ok) {
+          showToast("Simulated 3 Buses Breakdown: Transit deficit injected into Digital Twin!", "danger");
+          await fetchGpsFleet();
+          await refreshDashboardState();
+        }
+      } catch (err) {
+        showToast(`Failure injection failed: ${err.message}`, "danger");
+      }
+    }
+
+    async function resetFleetSimulator() {
+      try {
+        const res = await fetch(`${API_BASE}/gps/fleet/reset`, { method: "POST" });
+        if (res.ok) {
+          showToast("Fleet Simulator reset to normal operations.", "success");
+          await fetchGpsFleet();
+          await refreshDashboardState();
+        }
+      } catch (err) {
+        showToast(`Reset failed: ${err.message}`, "danger");
+      }
+    }
+
+    async function fetchPdrStream() {
+      try {
+        const res = await fetch(`${API_BASE}/pdr/stream`);
+        if (res.ok) {
+          const data = await res.json();
+          const zoneA = data["ZONE-56894058"] || Object.values(data)[0];
+          if (zoneA) {
+            const devEl = document.getElementById("pdr-stat-devices");
+            const spdEl = document.getElementById("pdr-stat-speed");
+            const flwEl = document.getElementById("pdr-stat-flow");
+            if (devEl) devEl.innerText = zoneA.device_count;
+            if (spdEl) spdEl.innerText = `${zoneA.mean_speed_mps} m/s`;
+            if (flwEl) flwEl.innerText = `${zoneA.flow_rate_per_min > 0 ? '+' : ''}${zoneA.flow_rate_per_min}/m`;
+          }
+        }
+      } catch (err) {
+        console.warn("PDR stream error:", err);
+      }
+    }
+
 
     async function fetchCctvTelemetry() {
       try {

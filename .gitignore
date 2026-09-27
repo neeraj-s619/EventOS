@@ -38,6 +38,9 @@ ENV/
 # IDE
 .idea/
 .vscode/
+
+# Archives
+*.zip
 *.swp
 *.swo
 

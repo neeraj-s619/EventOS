@@ -335,7 +335,73 @@ class CCTVEngine:
                 video_filename=os.path.join(self.cctv_dir, "cam03_gate.mp4"),
                 line_y=160,
                 desc="External holding queue & security checkpoint"
+            ),
+            "CAM-04": CameraFeed(
+                camera_id="CAM-04",
+                name="Gate B Upper Pavilion Link",
+                zone_id="ZONE-28E21710",
+                zone_name="Zone B - North Gate",
+                video_filename=os.path.join(self.cctv_dir, "cam04_gate_b.mp4"),
+                line_y=190,
+                desc="Upper pavilion ingress & stairwell link"
             )
+        }
+
+    def get_venue_aggregation(self) -> Dict[str, Any]:
+        """
+        Aggregates individual camera observations into zone-level states and venue-level estimate.
+        """
+        zone_aggregates: Dict[str, Dict[str, Any]] = {}
+        total_observed = 0
+        total_in = 0
+        total_out = 0
+
+        for cid, cam in self.cameras.items():
+            tele = self.get_telemetry(cid)
+            zid = cam.zone_id
+            if zid not in zone_aggregates:
+                zone_aggregates[zid] = {
+                    "zone_id": zid,
+                    "zone_name": cam.zone_name,
+                    "cameras": [],
+                    "visible_count": 0,
+                    "entered_count": 0,
+                    "exited_count": 0,
+                    "net_flow": 0,
+                    "density": "NORMAL"
+                }
+            z = zone_aggregates[zid]
+            z["cameras"].append(cid)
+            z["visible_count"] += tele["metrics"]["currently_visible"]
+            z["entered_count"] += tele["metrics"]["entered_count"]
+            z["exited_count"] += tele["metrics"]["exited_count"]
+            z["net_flow"] += tele["metrics"]["net_flow"]
+
+            total_observed += tele["metrics"]["currently_visible"]
+            total_in += tele["metrics"]["entered_count"]
+            total_out += tele["metrics"]["exited_count"]
+
+        for zid, z in zone_aggregates.items():
+            if z["visible_count"] > 60:
+                z["density"] = "HIGH"
+            elif z["visible_count"] > 35:
+                z["density"] = "MODERATE"
+            else:
+                z["density"] = "NORMAL"
+
+        venue_net = total_in - total_out
+        calibrated_attendance = 21370 + venue_net
+
+        return {
+            "source": "CCTV_REPLAY_MULTI_CAMERA_AGGREGATION",
+            "camera_count": len(self.cameras),
+            "total_observed_visible": total_observed,
+            "total_inflow": total_in,
+            "total_outflow": total_out,
+            "venue_net_flow": venue_net,
+            "calibrated_venue_attendance": calibrated_attendance,
+            "zones": zone_aggregates,
+            "provenance": "Aggregated from Camera 01 (Gate A), Camera 02 (North Concourse), Camera 03 (Holding Queue), Camera 04 (Gate B Link)"
         }
 
     def generate_annotated_stream(self, camera_id: str) -> Generator[bytes, None, None]:

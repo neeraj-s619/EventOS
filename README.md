@@ -81,6 +81,16 @@ eventos/
 
 ---
 
+## 🌐 Frontend Netlify Deployment
+
+A standalone deployment package for [Netlify](https://www.netlify.com/) is pre-built and packaged:
+
+- **Instant Drop Deploy**: Drag & drop [eventos-netlify-deploy.zip](file:///c:/Users/neera/OneDrive/Documents/Default%20Project/eventos/eventos-netlify-deploy.zip) directly into [app.netlify.com/drop](https://app.netlify.com/drop).
+- **Backend Connection**: Configure your FastAPI backend host via the dashboard's top-bar `API` button or customize `_redirects` / `netlify.toml` in `frontend/`.
+- See [frontend/README.md](file:///c:/Users/neera/OneDrive/Documents/Default%20Project/eventos/frontend/README.md) for full instructions.
+
+---
+
 ## 🧪 Testing & Verification
 
 Run the comprehensive integration scenario test suite:

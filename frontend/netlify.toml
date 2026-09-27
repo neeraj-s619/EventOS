@@ -1,0 +1,38 @@
+# ===============================================================
+# EVENTOS — Netlify Configuration
+# ===============================================================
+
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/cctv/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Proxy rules for API (uncomment and replace URL when deploying with a production backend)
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://your-eventos-backend.onrender.com/api/:splat"
+#   status = 200
+#   force = true
+
+# Single Page Application / Static Site fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

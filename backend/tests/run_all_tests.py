@@ -33,6 +33,8 @@ TEST_MODULES = [
     "tests.test_whatsapp_operational_telemetry",
     "tests.test_cctv_cv_engine",
     "tests.test_telegram_provider_pulse",
+    "tests.test_telegram_operations_network",
+    "tests.test_operational_simulation_platform",
 ]
 
 

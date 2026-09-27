@@ -2039,3 +2039,86 @@ def get_cv_stream(camera_id: str):
         engine.generate_annotated_stream(camera_id),
         media_type="multipart/x-mixed-replace; boundary=frame"
     )
+
+
+@router.get("/cv/venue-aggregation")
+def get_cv_venue_aggregation():
+    """
+    Hierarchical spatial aggregation:
+    Individual Camera Observations -> Zone-Level States -> Calibrated Venue Attendance Estimate.
+    """
+    from app.services.cctv_engine import get_cctv_engine
+    engine = get_cctv_engine()
+    return engine.get_venue_aggregation()
+
+
+@router.get("/pdr/stream")
+def get_pdr_stream(minute_offset: Optional[int] = None):
+    """
+    Minute-by-minute pedestrian movement time-series replay across all zones.
+    """
+    from app.services.pdr_stream import get_pdr_stream_engine
+    engine = get_pdr_stream_engine()
+    return engine.get_all_zones_stream(minute_offset)
+
+
+@router.get("/gps/fleet")
+def get_gps_fleet():
+    """
+    Live GPS fleet simulator telemetry for transit buses, feeders, and ambulances.
+    """
+    from app.services.gps_fleet_simulator import get_gps_fleet_simulator
+    sim = get_gps_fleet_simulator()
+    return sim.get_fleet_telemetry()
+
+
+@router.post("/gps/fleet/simulate-failure")
+def simulate_fleet_failure():
+    """
+    Injects transport breakdown (3 buses offline) creating an immediate transit seat shortage.
+    """
+    from app.services.gps_fleet_simulator import get_gps_fleet_simulator
+    sim = get_gps_fleet_simulator()
+    return sim.simulate_transport_failure(num_offline=3)
+
+
+@router.post("/gps/fleet/reset")
+def reset_fleet():
+    """Resets all vehicles to healthy operational status."""
+    from app.services.gps_fleet_simulator import get_gps_fleet_simulator
+    sim = get_gps_fleet_simulator()
+    sim.reset_fleet()
+    return {"status": "ok", "message": "Fleet reset to normal service"}
+
+
+@router.get("/scenarios/list")
+def list_scenarios():
+    """Lists the 6 operational scenarios available in the scenario engine."""
+    from app.services.scenario_engine import get_scenario_engine
+    engine = get_scenario_engine()
+    return {"scenarios": engine.SCENARIO_DEFINITIONS}
+
+
+class ScenarioExecuteRequest(BaseModel):
+    scenario_key: str = "COMBINED_EXTREME_EVENT"
+
+
+@router.post("/scenarios/execute")
+def execute_scenario(req: ScenarioExecuteRequest):
+    """
+    Executes an operational scenario on the Digital Twin and returns What-If state
+    with side-by-side Baseline vs What-If comparison matrix.
+    """
+    from app.services.scenario_engine import get_scenario_engine
+    engine = get_scenario_engine()
+    return engine.execute_scenario(req.scenario_key)
+
+
+@router.get("/timeline/events")
+def get_timeline_events(seconds: Optional[int] = None):
+    """
+    Granular, second-by-second cause-and-effect event chronology log.
+    """
+    from app.services.timeline_engine import get_timeline_engine
+    engine = get_timeline_engine()
+    return {"timeline": engine.get_timeline(seconds)}

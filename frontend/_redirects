@@ -1,0 +1,12 @@
+# ===============================================================
+# EVENTOS Netlify Redirects & Reverse Proxy Configuration
+# ===============================================================
+
+# 1. API Reverse Proxy:
+# If your FastAPI backend is hosted on Render, Railway, Fly.io, or ngrok,
+# uncomment and set your backend URL below to proxy all /api calls.
+#
+# /api/*  https://your-eventos-backend.onrender.com/api/:splat  200!
+
+# 2. Single Page & HTML5 Fallback:
+/*    /index.html   200
